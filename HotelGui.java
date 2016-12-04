@@ -7,7 +7,7 @@ public class HotelGui{
 	static JFrame HotelWindow;
 	static JButton MRes;
 	static JButton VRes;
-	
+	static JPanel panel;
 	static Container pane;
 	
 	
@@ -38,11 +38,12 @@ public class HotelGui{
 		 JButton Signup;
 		 JTextField Username;
 		 JFrame HotelWindow;
+	
 		
 		HotelWindow = new JFrame ("Sign Up/In");
 		HotelWindow.setSize(300, 200);
-		//pane= HotelWindow.getContentPane();
-		//pane.setLayout(null);
+		pane= HotelWindow.getContentPane();
+		pane.setLayout(null);
 		HotelWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
@@ -50,18 +51,21 @@ public class HotelGui{
 		Signin= new JButton("Sign In");
 		Signup= new JButton("Sign up");
 		Username= new JTextField("Username");
+		panel = new JPanel(null);
 		
 		
 		//add to the window
-		//pane.add(HotelWindow);
-		HotelWindow.add(Signin);
-		HotelWindow.add(Signup);
-		HotelWindow.add(Username);
+		pane.add(panel);
+		
+		panel.add(Signin);
+		panel.add(Signup);
+		panel.add(Username);
 		//HotelWindow.add(MRes);
 		//HotelWindow.add(VRes);
 		
 		
 		//setting bounds
+		panel.setBounds(0, 0, 300, 200);
 		Signin.setBounds(50, 100, 90, 30);
 		Signup.setBounds(150, 100, 90, 30);
 		Username.setBounds(100, 50, 100,20 );
