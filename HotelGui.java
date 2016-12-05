@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
 
@@ -54,6 +56,10 @@ public class HotelGui{
 		panel = new JPanel(null);
 		
 		
+		//register actionlisteners
+		Signin.addActionListener(new SignInbtn() );
+		Signup.addActionListener(new SignUpbtn() );
+		
 		//add to the window
 		pane.add(panel);
 		
@@ -71,22 +77,65 @@ public class HotelGui{
 		Username.setBounds(100, 50, 100,20 );
 		HotelWindow.setVisible(true);
 	}
-	public class Available{
+	
+	public static void AvailableRooms(){
+		JFrame AvailPage;
+		AvailPage = new JFrame("Available rooms");
+		AvailPage.setSize(600, 300);
+		pane= AvailPage.getContentPane();
+		pane.setLayout(null);
+		AvailPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		panel = new JPanel(null);
+		
+		pane.add(panel);
+		
+		panel.setBounds(0,0,600,300);
+		AvailPage.setVisible(true);
 		
 	}
 	public static void ResPage(){
-		HotelWindow = new JFrame ("Hotel Window");
-		HotelWindow.setSize(500, 600);
-		HotelWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JFrame Respage;
+		Respage = new JFrame ("Hotel Window");
+		Respage.setSize(500, 600);
+		pane= Respage.getContentPane();
+		pane.setLayout(null);
+		Respage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		//Control labelling
 		MRes= new JButton("Make Reservation");
 		VRes= new JButton("View/cancel Reservation");
 		
+		//register actionlisteners
+		MRes.addActionListener(new MakeResbtn());
+		VRes.addActionListener(new ViewResbtn());
+		
 		
 		//add to the window
 		HotelWindow.add(MRes);
 		HotelWindow.add(VRes);
+	}
+	
+	//actionlistener class section
+	static class MakeResbtn implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+            AvailableRooms();
+		}
+		
+	}
+	static class ViewResbtn implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+            AvailableRooms();
+            }
+	}
+	static class SignInbtn implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+            ResPage();
+            }
+	}
+	static class SignUpbtn implements ActionListener{
+		public void actionPerformed (ActionEvent e){
+            AvailableRooms();
+            }
 	}
 }
