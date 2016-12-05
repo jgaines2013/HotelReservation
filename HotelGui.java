@@ -84,7 +84,7 @@ public class HotelGui{
 		AvailPage.setSize(600, 300);
 		pane= AvailPage.getContentPane();
 		pane.setLayout(null);
-		AvailPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		AvailPage.setDefaultCloseOperation(AvailPage.EXIT_ON_CLOSE);
 		panel = new JPanel(null);
 		
 		pane.add(panel);
@@ -99,8 +99,11 @@ public class HotelGui{
 		Respage.setSize(500, 600);
 		pane= Respage.getContentPane();
 		pane.setLayout(null);
-		Respage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Respage.setDefaultCloseOperation(Respage.EXIT_ON_CLOSE);
+		panel = new JPanel(null);
 		
+		pane.add(panel);
+		panel.setBounds(0,0,400,400);
 		
 		//Control labelling
 		MRes= new JButton("Make Reservation");
@@ -112,8 +115,9 @@ public class HotelGui{
 		
 		
 		//add to the window
-		HotelWindow.add(MRes);
-		HotelWindow.add(VRes);
+		Respage.add(MRes);
+		Respage.add(VRes);
+		Respage.setVisible(true);
 	}
 	
 	//actionlistener class section
