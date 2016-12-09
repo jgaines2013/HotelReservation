@@ -5,7 +5,7 @@
  * along with corresponding prices
  */
 public enum RoomType {
-	LUXURY(200), ECONOMY(100);
+	LUXURY(200), ECONOMY(100); // or was it $80 for economy?
 	
 	private double price;
 	
@@ -20,4 +20,15 @@ public enum RoomType {
 	 * @return  price
 	 */
 	public double getPrice(){ return price; }
+	
+	/**
+	 * Returns a string representation of the object
+	 * @return string representation
+	 */
+	public String toString(){ return name()+String.format(" ($%.2f)", price); }
+	
+	// tester
+	public static void main(String[] args){
+		System.out.println(LUXURY);
+	}
 }

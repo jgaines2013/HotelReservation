@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Describes a single reservation in a hotel room
  */
-public class Reservation {
+public class Reservation implements Comparable<Reservation>{
 	private User guest;
 	private Room room;
 	private Date start;
@@ -88,6 +88,31 @@ public class Reservation {
 	 * @return end
 	 */
 	public Date getCheckOut(){ return end; }
+	
+	/**
+	 * Compares the current reservation to another reservation
+	 * @param that  the other reservation
+	 * @return cmp  if the current reservation is less than, equal to, or greater than the other
+	 */
+	public int compareTo(Reservation that){
+		int cmp = this.getGuest().getID() - that.getGuest().getID();
+		if (cmp == 0)
+			cmp = this.room.compareTo(that.room);
+		if (cmp == 0)
+			cmp = this.start.compareTo(that.start);
+		if (cmp == 0)
+			cmp = this.end.compareTo(that.end);
+		return cmp;
+	}
+	
+	/**
+	 * Checks if the current reservation is equal to another reservation
+	 * @param that  the other reservation
+	 * @return      if this reservation is equal to the other
+	 */
+	public boolean equals(Object that){
+		return that instanceof Reservation && this.compareTo((Reservation)that) == 0;
+	}
 	
 	// tester
 	public static void main(String args[]) throws ParseException{
