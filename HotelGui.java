@@ -37,6 +37,7 @@ public class HotelGui{
 		
 		//HotelWindow.setVisible(true);
 	}
+	/*  NO Need. was before split into classes
 	public static void startup(){
 		 JButton Guest;
 		 JButton Manager;
@@ -348,5 +349,5 @@ public class HotelGui{
 		public void actionPerformed (ActionEvent e){
             SignUp();
             }
-	}
+	}*/
 }
