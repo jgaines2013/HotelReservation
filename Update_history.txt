@@ -1,0 +1,5 @@
+This document is to serve as an easy guidline to what i/we have changed, to try to minimize confusion
+
+
+
+12/9 11:01 completed seperating views into classes 
