@@ -15,7 +15,9 @@ public class HotelGui{
 	
 	public static void main(String[] args)
 	{
-		startup();
+		StartUpView window= new StartUpView();
+		window.startup();
+		//startup();
 		/*
 		HotelWindow = new JFrame ("Hotel Window");
 		HotelWindow.setSize(500, 600);
@@ -159,6 +161,8 @@ public class HotelGui{
 		 JTextField Checkin;
 		 JTextField Checkout;
 		 JFrame HotelWindow;
+		 JLabel checkin= new JLabel("Check in");
+		 JLabel checkout= new JLabel("Check out");
 	
 		
 		HotelWindow = new JFrame ("Sign Up/In");
@@ -171,8 +175,8 @@ public class HotelGui{
 		//Control labelling
 		Lux= new JButton("Luxury");
 		Econ= new JButton("Economy");
-		Checkin= new JTextField("Check in");
-		Checkout= new JTextField("Check out");
+		Checkin= new JTextField("mmddyyyy");
+		Checkout= new JTextField("mmddyyyy");
 		panel = new JPanel(null);
 		
 		
@@ -187,16 +191,21 @@ public class HotelGui{
 		panel.add(Checkout);
 		panel.add(Lux);
 		panel.add(Econ);
+		panel.add(checkin);
+		panel.add(checkout);
+		
 		//HotelWindow.add(MRes);
 		//HotelWindow.add(VRes);
 		
 		
 		//setting bounds
 		panel.setBounds(0, 0, 300, 200);
-		Checkin.setBounds(50, 100, 90, 30);
-		Checkout.setBounds(150, 100, 90, 30);
-		Lux.setBounds(50, 50, 100,20 );
-		Econ.setBounds(150, 50, 100,20 );
+		Checkin.setBounds(50, 60, 90, 30);
+		Checkout.setBounds(150, 60, 90, 30);
+		checkin.setBounds(55, 35, 90, 30);
+		checkout.setBounds(155, 35, 90, 30);
+		Lux.setBounds(50, 135, 100,20 );
+		Econ.setBounds(150, 135, 100,20 );
 		HotelWindow.setVisible(true);
 	}
 	public static void AvailableRooms(String checkin, String checkout){
@@ -212,6 +221,7 @@ public class HotelGui{
 		pane.setLayout(null);
 		AvailPage.setDefaultCloseOperation(AvailPage.EXIT_ON_CLOSE);
 		panel = new JPanel(null);
+		
 		
 		//text area
 		RoomNumResmsg= new JTextArea("Room number \n to reserve");
@@ -259,8 +269,7 @@ public class HotelGui{
 		Respage.setDefaultCloseOperation(Respage.EXIT_ON_CLOSE);
 		panel = new JPanel(null);
 		
-		//pane.add(panel);
-		//panel.setBounds(0,0,400,400);
+		
 		
 		//Control labelling
 		MRes= new JButton("Make Reservation");
@@ -320,7 +329,9 @@ public class HotelGui{
 	}
 	static class Guestbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
+			
 			SignIn();
+			
             }
 	}
 	static class Managerbtn implements ActionListener{
