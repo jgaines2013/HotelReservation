@@ -4,7 +4,7 @@
  * Describes a single room in the hotel
  */
 public class Room implements Comparable<Room>{
-	private String name;
+	private int number;
 	private RoomType type;
 	
 	/**
@@ -12,8 +12,8 @@ public class Room implements Comparable<Room>{
 	 * @param name	name of the room
 	 * @param type	room type, either ECONOMY or LUXURY
 	 */
-	public Room(String name, RoomType type){
-		this.name = name;
+	public Room(int number, RoomType type){
+		this.number = number;
 		this.type = type;
 	}
 	
@@ -21,7 +21,7 @@ public class Room implements Comparable<Room>{
 	 * Gets the name
 	 * @return name
 	 */
-	public String getName(){ return name; }
+	public int getNum(){ return number; }
 	
 	/**
 	 * Gets the room type
@@ -33,7 +33,7 @@ public class Room implements Comparable<Room>{
 	 * Calculates the hash of the object
 	 */
 	public int hashCode(){
-		return (int)(name.hashCode() * type.getPrice());
+		return (int)(number * type.getPrice());
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class Room implements Comparable<Room>{
 	 * @return cmp  if this room is less than, equal to, or greater than the other
 	 */
 	public int compareTo(Room that){
-		int cmp = this.name.compareTo(that.name);
+		int cmp = this.number - that.number;
 		if (cmp == 0)
 			cmp = this.type.ordinal() - that.type.ordinal();
 		return cmp;

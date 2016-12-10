@@ -18,6 +18,8 @@ public class AccountManager implements Serializable {
 	private HashMap<Integer, User> users;
 	private static final User firstGuest = new User("user1", 1000, false);
 	private static final User firstMgr = new User("mgr1", 10000, true);
+	private RoomScheduler reservations;
+	private Set<Room> rooms;
 	
 	/**
 	 * Ctor for an AccountManager, which is always initialized with two dummy accounts
@@ -26,6 +28,12 @@ public class AccountManager implements Serializable {
 		users = new HashMap<>();
 		users.put(1000, firstMgr);
 		users.put(10000, firstGuest);
+		
+		rooms = new TreeSet<>();
+		for (int i = 1; i <= 10; i++){
+			rooms.add(new Room(100+i,RoomType.LUXURY));
+			rooms.add(new Room(200+i,RoomType.ECONOMY));
+		}
 	}
 	
 	/**
@@ -125,8 +133,8 @@ public class AccountManager implements Serializable {
 		
 		SimpleDateFormat f = new SimpleDateFormat("MM/dd/yy");
 		
-		int target = man.setupGuest("brandon");
-		man.setupManager("shelly");
+		int target = man.setupGuest("shelly");
+		int test = man.setupManager("brandon");
 		man.setupGuest("jerry");
 		System.out.println("initial: " + man.getAll());
 		
@@ -137,5 +145,7 @@ public class AccountManager implements Serializable {
 		System.out.println("added: " + man.getAll());
 		System.out.println("All: " + man.users.values());
 		System.out.println("User 10002 is " + man.login(10002));
+		
+		
 	}
 }
