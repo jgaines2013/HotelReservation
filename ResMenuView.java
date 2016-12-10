@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ResPageView{
+public class ResMenuView{
 	 //JFrame HotelWindow;
 	 JButton MRes;
 	 JButton VRes;

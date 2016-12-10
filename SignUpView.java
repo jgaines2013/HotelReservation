@@ -51,7 +51,7 @@ public class SignUpView{
 	}
 	 class SignUpbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-            ResPageView view= new ResPageView();
+            ResMenuView view= new ResMenuView();
 			view.ResPage();
 			HotelWindow.dispose();
 			

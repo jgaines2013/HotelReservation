@@ -64,7 +64,7 @@ public class ManagerMenuViews{
 	}
 	class LoadResbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			ResPageView view=new ResPageView();
+			ResMenuView view=new ResMenuView();
             view.ResPage();
             HotelWindow.dispose();
             }
