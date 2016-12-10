@@ -6,15 +6,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+
+import javax.swing.JOptionPane;
 
 /**
  * Takes in reservations and checks if new reservations conflict with existing ones
  * Can also determine which reservations are active on certain days
  */
 public class RoomScheduler {
-	private HashMap<Integer, Set<Reservation>> reservations;
+	private Map<Integer, Set<Reservation>> reservations;
 	
 	/**
 	 * Ctor for a Room Scheduler
