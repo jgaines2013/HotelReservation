@@ -114,11 +114,22 @@ public class Reservation implements Comparable<Reservation>{
 		return that instanceof Reservation && this.compareTo((Reservation)that) == 0;
 	}
 	
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		SimpleDateFormat f = new SimpleDateFormat("MM/dd/yy");
+		
+		sb.append(this.guest.getName()+", ");
+		sb.append("Room "+this.room.getNum()+": ");
+		sb.append(f.format(start)+" - ");
+		sb.append(f.format(end));
+		return sb.toString();
+	}
+	
 	// tester
 	public static void main(String args[]) throws ParseException{
 		SimpleDateFormat f = new SimpleDateFormat("MM/dd/yy");
 		User g = new User("me", 5, false);
-		Room r = new Room("101", RoomType.ECONOMY);
+		Room r = new Room(101, RoomType.ECONOMY);
 		Date mon = f.parse("12/12/16");
 		Date tue = f.parse("12/13/16");
 		Date wed = f.parse("12/14/16");

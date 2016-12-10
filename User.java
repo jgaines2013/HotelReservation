@@ -96,5 +96,5 @@ public class User implements Comparable<User>{
 	 * Returns string representation of this User
 	 * @return string representation
 	 */
-	public String toString(){ return (privileged ? "Mgr" : "Guest") + "#" + id + ": " + name; };
+	public String toString(){ return (privileged ? "Mgr" : "Guest") + " " + id + ": " + name; };
 }

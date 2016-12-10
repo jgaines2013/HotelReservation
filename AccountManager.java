@@ -16,10 +16,12 @@ import java.util.TreeSet;
  */
 public class AccountManager implements Serializable {
 	private HashMap<Integer, User> users;
+	//private RoomScheduler activeRes; // not sure about this honestly
+	private Set<Room> rooms;
+	
+	// dummy accounts
 	private static final User firstGuest = new User("user1", 1000, false);
 	private static final User firstMgr = new User("mgr1", 10000, true);
-	private RoomScheduler reservations;
-	private Set<Room> rooms;
 	
 	/**
 	 * Ctor for an AccountManager, which is always initialized with two dummy accounts
@@ -145,7 +147,5 @@ public class AccountManager implements Serializable {
 		System.out.println("added: " + man.getAll());
 		System.out.println("All: " + man.users.values());
 		System.out.println("User 10002 is " + man.login(10002));
-		
-		
 	}
 }
