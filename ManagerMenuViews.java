@@ -71,9 +71,9 @@ public class ManagerMenuViews{
 	}
 	 class ViewInfobtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			SignUpView view = new SignUpView();
-            view.SignUp();
-            HotelWindow.dispose();
+			MgrMonthView view = new MgrMonthView();
+            view.launchFrame();
+            //HotelWindow.dispose();
             }
 	}
 	 class SaveResbtn implements ActionListener{
