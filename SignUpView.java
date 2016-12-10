@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+//dont need this
 public class SignUpView{
 	 JButton Signup;
 	 JTextField Username;

@@ -57,8 +57,8 @@ public class StartUpView{
 		}
 	  class Managerbtn implements ActionListener{
 			public void actionPerformed (ActionEvent e){
-				ResPageView view= new ResPageView();
-	            view.ResPage();
+				ManagerSigninView view= new ManagerSigninView();
+	            view.SignIn();
 	            HotelWindow.dispose();
 	            }
 		}
