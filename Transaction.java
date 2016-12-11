@@ -50,4 +50,13 @@ public class Transaction {
 	public User getCustomer(){
 		return guest;
 	}
+	
+	/**
+	 * Builds a formatted receipt of this transaction
+	 * @param	formatter strategy
+	 * @return	receipt in string form
+	 */
+	public String format(ReceiptFormatter formatter){
+		return formatter.formatReceipt(this);
+	}
 }
