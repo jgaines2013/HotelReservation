@@ -2,7 +2,9 @@
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * Describes a single reservation in a hotel room
@@ -25,6 +27,11 @@ public class Reservation implements Comparable<Reservation>{
 	public Reservation(User u, Room r, Date checkIn, Date checkOut){
 		if (checkOut.before(checkIn))
 			throw new IllegalArgumentException("Check out date cannot be before check in date.");
+		GregorianCalendar after60 = new GregorianCalendar();
+		after60.setTime(checkIn);
+		after60.add(Calendar.DAY_OF_MONTH, 60);
+		if (checkOut.after(after60.getTime()))
+			throw new IllegalArgumentException("Check out date cannot be over 60 days after check in date.");
 		guest = u;
 		room = r;
 		start = checkIn;

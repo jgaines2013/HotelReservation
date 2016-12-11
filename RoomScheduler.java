@@ -47,6 +47,9 @@ public class RoomScheduler {
 	 * @throws SchedulingConflictException 
 	 */
 	public Reservation add(Reservation r) throws SchedulingConflictException{
+		// fails if check-in time is before current date
+		if (r.getCheckIn().before(new Date()))
+			return null;
 		int rnum = r.getRoom().getNum();
 		// check if reservation conflicts with any others, time-wise
 		Reservation conflict = checkOverlap(r);
