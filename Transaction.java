@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -58,5 +60,20 @@ public class Transaction {
 	 */
 	public String format(ReceiptFormatter formatter){
 		return formatter.formatReceipt(this);
+	}
+	
+	// tester
+	public static void main(String[] args) throws ParseException{
+		User u = new User("testy test",10001, false);
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
+		Room r1 = new Room(101, RoomType.ECONOMY);
+		Room r2 = new Room(102, RoomType.LUXURY);
+		
+		Transaction t = new Transaction(u);
+		Reservation res1 = new Reservation(u,r1,sdf.parse("12/12/12"),sdf.parse("12/13/12"));
+		Reservation res2 = new Reservation(u,r2,sdf.parse("12/14/12"),sdf.parse("12/15/12"));
+		t.add(res1);
+		t.add(res2);
+		System.out.println(t.format(new SimpleReceiptFormatter()));
 	}
 }

@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -11,16 +12,16 @@ public class ComprehensiveReceiptFormatter implements ReceiptFormatter {
 	 * @return	the receipt
 	 */
 	public String formatReceipt(Transaction t){
-		StringBuilder receipt = new StringBuilder("Receipt for "+t.getCustomer());
+		StringBuilder receipt = new StringBuilder("Receipt for "+t.getCustomer()+"\n");
 		ArrayList<Reservation> order = new ArrayList<>(t.getCustomer().getReservations());
 		double total = 0;
 		for (Reservation r : order){
 			double price = r.getRoom().getType().getPrice();
 			receipt.append(dispRes(r));
-			receipt.append("\t"+String.format(" ($%.2f)", price));
+			receipt.append("\t"+String.format(" $%.2f", price)+"\n");
 			total += price;
 		}
-		receipt.append("TOTAL = "+String.format(" ($%.2f)", total));
+		receipt.append("TOTAL = "+String.format(" $%.2f", total)+"\n");
 		return receipt.toString();
 	}
 	
@@ -30,6 +31,7 @@ public class ComprehensiveReceiptFormatter implements ReceiptFormatter {
 	 * @return	formatted reservation
 	 */
 	public String dispRes(Reservation r){
-		return r.getRoom() + ": " + r.getCheckIn() + " - " + r.getCheckOut();
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yy");
+		return r.getRoom() + ": " + sdf.format(r.getCheckIn()) + " - " + sdf.format(r.getCheckOut());
 	}
 }
