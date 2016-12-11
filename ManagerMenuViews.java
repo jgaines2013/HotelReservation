@@ -1,6 +1,7 @@
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class ManagerMenuViews{
 	JButton LoadReservations;
@@ -80,7 +83,7 @@ public class ManagerMenuViews{
 	 class ViewInfobtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			
-			MgrMonthView view = new MgrMonthView();
+			/*MgrMonthView view = new MgrMonthView();
 			GregorianCalendar calendar = new GregorianCalendar();
 	        calendar.setTime(new Date());
 	        calendar.set(Calendar.HOUR, 0);
@@ -89,9 +92,37 @@ public class ManagerMenuViews{
 	        calendar.set(Calendar.MILLISECOND, 0);
 			
 			
-            view.launchFrame();
+            view.launchFrame();*/
+			SwingUtilities.invokeLater(new Runnable() {
+
+	            @Override
+	            public void run() {
+	                try {
+	                    UIManager.setLookAndFeel(
+	                            UIManager.getSystemLookAndFeelClassName());
+	                } catch (Exception e) {
+	                    e.printStackTrace();
+	                }
+
+	                HashMap<String, List<Reservation>> Reservations;
+	                try {
+	                    Reservations = ReservationsIO.load();
+	                } catch (IOException | ClassNotFoundException e) {
+	                    Reservations = new HashMap<>();
+	                }
+
+	                HotelModel model = new HotelModel(Reservations);
+	                MainView mainView = new MainView();
+
+	                new HotelController(model, mainView);
+
+	                model.setChosenDate(new Date());
+
+	                mainView.launchFrame();
+	            }
             //HotelWindow.dispose();
-            }
+            });
+		}
 	}
 	 class SaveResbtn implements ActionListener{
 			public void actionPerformed (ActionEvent e){

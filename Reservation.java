@@ -29,6 +29,13 @@ public class Reservation implements Comparable<Reservation>{
 		end = checkOut;
 	}
 	
+	//Created to make the savebuttonlistener << setupviewevents <<Hotelcontroller 
+	// to run
+
+	public Reservation(String name, Date startTime, Date endTime) {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Checks if the current reservation overlaps with another
 	 * @param that  the other reservation
