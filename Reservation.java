@@ -35,6 +35,9 @@ public class Reservation implements Comparable<Reservation>{
 	public Reservation(String name, Date startTime, Date endTime) {
 		// TODO Auto-generated constructor stub
 	}
+	public Reservation(Date Checkin) {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * Checks if the current reservation overlaps with another

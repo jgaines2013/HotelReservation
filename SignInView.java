@@ -15,6 +15,8 @@ public class SignInView{
 	 JFrame HotelWindow;
 	 JPanel panel;
 	 Container pane;
+	 int ID;
+	 AccountManager user = new AccountManager();
 	public void SignIn(){
 		
 		
@@ -55,14 +57,39 @@ public class SignInView{
 	}
 	 class SignInbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			ResMenuView view=new ResMenuView();
-            view.ResPage();
-            HotelWindow.dispose();
-            }
+			ID = Integer.parseInt(Username.getText());
+			try {
+				if (user.login(ID) != null )
+				{
+					
+				
+				//ID= Integer.parseInt(Username.toString());
+				ResMenuView view=new ResMenuView();
+				//RoomScheduler rs = new RoomScheduler();
+				view.ResPage();
+				HotelWindow.dispose();
+				}
+				else
+				{
+					System.out.println("not here");
+				}
+			} catch (UserNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		
+
+        }
+            
 	}
 	 class SignUpbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+"[insert ID]");
+			String username = Username.toString();
+			
+			ID = user.setupGuest(username);
+			
+			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+ ID);
 			panel.add(Congrats);
 			Congrats.setBounds(20,5,280, 60);
            // HotelWindow.dispose();

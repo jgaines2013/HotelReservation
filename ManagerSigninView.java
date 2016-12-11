@@ -1,6 +1,7 @@
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +17,9 @@ public class ManagerSigninView{
 	 JPanel panel;
 	 //JLabel Congrats;
 	 Container pane;
+	 int ID;
+	static AccountManager user = new AccountManager();
+	 private static HashMap<Integer, User> users;
 	public void SignIn(){
 		
 		
@@ -56,30 +60,43 @@ public class ManagerSigninView{
 	}
 	 class SignInbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			AccountManager users = new AccountManager();
-			try {
+			
+			
 				
 				//if ID is in List of Manager IDs, log in
 				//take the textfield convert to number then take number compare  
 				//to other numbers in Manager ID
-				users.login(Integer.parseInt(Username.toString()));
-				//if username.getID().isAdmin()
-				ManagerMenuViews view=new ManagerMenuViews();
-				//RoomScheduler rs = new RoomScheduler();
-	            view.ManagerSignin();
-	            HotelWindow.dispose();
-			} catch (NumberFormatException | UserNotFoundException e1) {
-				// TODO Auto-generated catch block
-				System.out.println("user not found try again");
-			}
+				//Username.get
+				ID = Integer.parseInt(Username.getText());
+				try {
+					if (user.login(ID) != null )
+					{
+						
+					
+					//ID= Integer.parseInt(Username.toString());
+					ManagerMenuViews view=new ManagerMenuViews();
+					//RoomScheduler rs = new RoomScheduler();
+					view.ManagerSignin();
+					HotelWindow.dispose();
+					}
+					else
+					{
+						System.out.println("not here");
+					}
+				} catch (UserNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			
 
             }
 	}
 	 class SignUpbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			String username = Username.toString();
-			AccountManager users = new AccountManager();
-			int ID = users.setupManager(username);
+			
+			ID = user.setupManager(username);
 			
 			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+ ID);
 			panel.add(Congrats);

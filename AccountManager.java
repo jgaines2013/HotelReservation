@@ -1,11 +1,17 @@
 //package hotel;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -17,9 +23,9 @@ import java.util.TreeSet;
  * To log in, a user must supply their system-assigned ID to access their account.
  */
 public class AccountManager implements Serializable {
-	private static HashMap<Integer, User> users;
+	 static HashMap<Integer, User> users;
 	//private RoomScheduler activeRes; // not sure about this honestly
-	private static Set<Room> rooms;
+	 static Set<Room> rooms;
 	
 	// dummy accounts
 	private static final User firstGuest = new User("user1", 1000, false);
@@ -171,4 +177,22 @@ public class AccountManager implements Serializable {
 		System.out.println(u.getReservations());
 		System.out.println(u2==u);
 	}
+	/**
+	 * Save and restore tasks to/from file
+	 */
+
+	    public static final String fileName = "reservations.txt";
+
+	    public void save(HashMap<String, List<Reservation>> Reservations) throws IOException {
+	        ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream(fileName));
+	        ois.writeObject(Reservations);
+	    }
+
+	    public HashMap<String, List<Reservation>> load() throws IOException, ClassNotFoundException {
+	        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName));
+	        return (HashMap<String, List<Reservation>>) ois.readObject();
+	    }
+
+	
+
 }

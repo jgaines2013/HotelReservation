@@ -53,8 +53,8 @@ public class ResMenuView{
 	}
 	 class ViewResbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			AvailableRoomsView view = new AvailableRoomsView();
-			view.AvailableRooms(null, null);
+			UserResView view = new UserResView();
+			view.UserRes();
 			Respage.dispose();
             }
 	}

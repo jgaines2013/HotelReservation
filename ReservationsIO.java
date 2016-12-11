@@ -7,7 +7,7 @@ import java.util.List;
  * Save and restore tasks to/from file
  */
 public class ReservationsIO {
-    public static final String fileName = "events.txt";
+    public static final String fileName = "reservations.txt";
 
     public static void save(HashMap<String, List<Reservation>> Reservations) throws IOException {
         ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream(fileName));

@@ -126,14 +126,26 @@ public class ManagerMenuViews{
 	}
 	 class SaveResbtn implements ActionListener{
 			public void actionPerformed (ActionEvent e){
+				ReservationsIO resList= new ReservationsIO();
+				//resList.save(Reservations);
 				//save the reservations 
 	            //HotelWindow.dispose();
 	            }
 		}
 	 class quitbtn implements ActionListener{
 			public void actionPerformed (ActionEvent e){
+				AccountManager resList= new AccountManager();
+				try {
+					resList.load();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				//save the reservations then quit
-	            HotelWindow.dispose();
+	            //HotelWindow.dispose();
 	            }
 		}
 }
