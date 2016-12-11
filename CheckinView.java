@@ -1,6 +1,10 @@
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,8 +33,8 @@ public class CheckinView{
 			//Control labelling
 			Lux= new JButton("Luxury");
 			Econ= new JButton("Economy");
-			Checkin= new JTextField("mmddyyyy");
-			Checkout= new JTextField("mmddyyyy");
+			Checkin= new JTextField("mm/dd/yy");
+			Checkout= new JTextField("mm/dd/yy");
 			panel = new JPanel(null);
 			
 			
@@ -66,7 +70,21 @@ public class CheckinView{
 			public void actionPerformed (ActionEvent e){
 	            //shows luxury rooms available for that stay
 				AvailableRoomsView view = new AvailableRoomsView();
-				view.AvailableRooms(null, null);
+				Date a =null,b = null;
+				try {
+					a= new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(Checkin.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					b= new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(Checkout.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				view.AvailableRooms(a,b, true );
 				HotelWindow.dispose();
 	            }
 		}
@@ -74,8 +92,21 @@ public class CheckinView{
 			public void actionPerformed (ActionEvent e){
 	            //shows Economy room available for that stay period
 				AvailableRoomsView view = new AvailableRoomsView();
-				view.AvailableRooms(null, null);
-				HotelWindow.dispose();
+				Date a =null,b = null;
+				try {
+					a= new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(Checkin.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					b= new SimpleDateFormat("dd/MM/yy", Locale.ENGLISH).parse(Checkout.getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				view.AvailableRooms(a,b,false );
 	            }
 		}
 }

@@ -11,12 +11,14 @@ import javax.swing.JTextField;
 
 public class UserResView{
 	JFrame AvailPage;
-	JTextField RoomNumRes;
+	static JTextField RoomNumRes;
 	JTextArea RoomNumResmsg;
 	TextArea Rooms;
 	JButton Confirm, MRes, Done;
 	JPanel panel;
 	Container pane;
+	String text;
+	
 	public void UserRes(){
 		AvailPage = new JFrame("Rooms reserved");
 		AvailPage.setSize(700, 300);
@@ -27,7 +29,7 @@ public class UserResView{
 		
 		
 		//text area
-		RoomNumResmsg= new JTextArea("Checkin date /n to delete");
+		RoomNumResmsg= new JTextArea("Checkin date \n to delete");
 		RoomNumRes= new JTextField("");
 		Rooms = new TextArea();
 		Confirm= new JButton("Delete");
@@ -52,7 +54,7 @@ public class UserResView{
 		Done.addActionListener(new Donebtn());
 		Confirm.addActionListener(new Confirmbtn());
 		
-		
+		RoomNumResmsg.setEditable(false);
 		Confirm.setBounds(325, 200, 100, 40);
 		MRes.setBounds(435, 200, 150, 40);
 		Done.setBounds(585, 200, 100, 40);
@@ -74,6 +76,10 @@ public class UserResView{
 		public void actionPerformed (ActionEvent e){
            //Send info to model
 			RoomScheduler rs= new RoomScheduler();
+			
+			
+			//rs.remove(r);
+			RoomNumRes.getText();
 			//Reservation r= new Reservation(null, null, null);
 			//rs.remove(r);
 		}

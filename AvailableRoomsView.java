@@ -2,6 +2,7 @@ import java.awt.Container;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +18,8 @@ public class AvailableRoomsView{
 	JButton Confirm, MRes, Done;
 	JPanel panel;
 	Container pane;
-	public void AvailableRooms(String checkin, String checkout){
+	RoomScheduler rs= new RoomScheduler();
+	public void AvailableRooms(Date checkin, Date checkout, boolean a){
 		AvailPage = new JFrame("Available rooms");
 		AvailPage.setSize(700, 300);
 		pane= AvailPage.getContentPane();
@@ -60,7 +62,14 @@ public class AvailableRoomsView{
 		RoomNumRes.setBounds(550, 5, 100, 60);
 		Rooms.setBounds(5, 5, 300,250);
 		panel.setBounds(0,0,700,300);
+		//Date d = null;
+		//System.out.println(d);
+		//rs.getByDay(checkin);
+		
+		
 		AvailPage.setVisible(true);
+		
+		
 		
 	}
 	 class Donebtn implements ActionListener{
