@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Describes a concrete strategy for formatting a transaction into a simple receipt
  * @author Brandon Cecilio
  */
-public class ComprehensiveReceiptFormatter {
+public class ComprehensiveReceiptFormatter implements ReceiptFormatter {
 	/**
 	 * Formats a transaction into a comprehensive receipt
 	 * @param t the transaction
