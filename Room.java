@@ -2,6 +2,8 @@
 
 /**
  * Describes a single room in the hotel
+ * 
+ * @author Brandon Cecilio
  */
 public class Room implements Comparable<Room>{
 	private int number;

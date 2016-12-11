@@ -6,6 +6,8 @@ import java.util.Date;
 
 /**
  * Describes a single reservation in a hotel room
+ * 
+ * @author Brandon Cecilio
  */
 public class Reservation implements Comparable<Reservation>{
 	private User guest;

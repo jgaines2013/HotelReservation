@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 /**
  * An exception for when a Reservation cannot be added to the system due to
  * a time conflict with an existing Reservation
+ * 
+ * @author Brandon Cecilio
  */
 public class SchedulingConflictException extends Exception {
 	/**

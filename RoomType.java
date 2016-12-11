@@ -3,6 +3,8 @@
 /**
  * Lists the possible room types,
  * along with corresponding prices
+ * 
+ * @author Brandon Cecilio
  */
 public enum RoomType {
 	LUXURY(200), ECONOMY(100); // or was it $80 for economy?

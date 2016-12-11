@@ -21,10 +21,11 @@ import java.util.TreeSet;
  * Whenever a user signs up, they are assigned an ID number from the system as follows:
  * between 1000-9999 for managers, and 10000-infinity for guests.
  * To log in, a user must supply their system-assigned ID to access their account.
+ * 
+ * @author Brandon Cecilio
  */
 public class AccountManager implements Serializable {
 	 static HashMap<Integer, User> users;
-	//private RoomScheduler activeRes; // not sure about this honestly
 	 static Set<Room> rooms;
 	
 	// dummy accounts
@@ -143,6 +144,18 @@ public class AccountManager implements Serializable {
 		accts.remove(firstGuest);
 		accts.remove(firstMgr);
 		return new ArrayList<>(accts);
+	}
+	
+	/**
+	 * Returns a RoomScheduler object populated with all reservations from all users
+	 * @return RoomScheduler object for scheduling reservations
+	 * @throws SchedulingConflictException
+	 */
+	public RoomScheduler getScheduler() throws SchedulingConflictException{
+		ArrayList<Reservation> all = new ArrayList<>();
+		for (User u : users.values())
+			all.addAll(u.getReservations());
+		return new RoomScheduler(all);
 	}
 	
 	// tester

@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 /**
  * Takes in reservations and checks if new reservations conflict with existing ones
  * Can also determine which reservations are active on certain days
+ * 
+ * @author Brandon Cecilio
  */
 public class RoomScheduler {
 	private Map<Integer, Set<Reservation>> reservations;

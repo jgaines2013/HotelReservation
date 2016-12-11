@@ -7,6 +7,8 @@ import java.util.Set;
 /**
  * Describes a single user of the application,
  * and whether or not they are a guest or an administrator
+ * 
+ * @author Brandon Cecilio
  */
 public class User implements Comparable<User>{
 	private String name;

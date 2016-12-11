@@ -2,6 +2,8 @@
 
 /**
  * An exception for when the system tries to reference a user who doesn't exist
+ * 
+ * @author Brandon Cecilio
  */
 public class UserNotFoundException extends Exception {
 	/**
