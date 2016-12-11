@@ -54,8 +54,10 @@ public class RoomScheduler {
 				reservations.put(rnum, new TreeSet<>());
 			
 			// if adding succeeds
-			if (reservations.get(rnum).add(r))
+			if (reservations.get(rnum).add(r)){
+				r.getGuest().addReservation(r);
 				return r;
+			}
 		}
 		else
 			throw new SchedulingConflictException(conflict);
@@ -71,6 +73,7 @@ public class RoomScheduler {
 		int rnum = r.getRoom().getNum();
 		Set<Reservation> set = reservations.get(rnum);
 		if (set != null && set.remove(r)){
+			r.getGuest().removeReservation(r);
 			if (set.isEmpty())
 				reservations.remove(rnum);
 			return r;

@@ -59,6 +59,15 @@ public class User implements Comparable<User>{
 	}
 	
 	/**
+	 * Adds a reservation to the user's active reservations
+	 * @param target    the reservation to remove
+	 * @return          whether or not addition was successful (if reservation was not found among active ones)
+	 */
+	public boolean addReservation(Reservation toAdd){
+		return activeReservations.add(toAdd);
+	}
+	
+	/**
 	 * Removes a reservation from the user's active reservations
 	 * @param target    the reservation to remove
 	 * @return          whether or not removal was successful (if reservation was found among active ones)

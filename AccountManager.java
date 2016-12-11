@@ -1,7 +1,9 @@
 //package hotel;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
@@ -100,40 +102,54 @@ public class AccountManager implements Serializable {
 	 * Given an ID number, returns the user's account
 	 * @param id    user's ID number	
 	 * @return		user's account
+	 * @throws UserNotFoundException 
 	 */
-	public User login(int id){
+	public User login(int id) throws UserNotFoundException{
 		if (id == 1000 || id == 10000)
 			return null;
-		return users.get(id);
+		User found = users.get(id);
+		if (found == null)
+			throw new UserNotFoundException(id);
+		return found;
 	}
 	
 	/**
 	 * Given an ID, permanently bans the user's account and removes it from the system
 	 * @param id    ID number of the account to ban
 	 * @return      banned user account
+	 * @throws UserNotFoundException 
 	 */
-	public User permaban(int id){
+	public User permaban(int id) throws UserNotFoundException{
 		if (id == 1000 || id == 10000)
-			return null;
-		return users.remove(id);
+			throw new IllegalArgumentException("Cannot ban user "+id);
+		User banned = users.remove(id);
+		if (banned == null)
+			throw new UserNotFoundException(id);
+		return banned;
 	}
 	
 	/**
 	 * Retrieves a collection of all the users in the database
 	 * @return  all the users signed up for this application
 	 */
-	public Set<User> getAll(){
-		SortedSet<User> accts = new TreeSet<>(users.values());
+	public ArrayList<User> getAll(){
+		TreeSet<User> accts = new TreeSet<>(users.values());
 		accts.remove(firstGuest);
 		accts.remove(firstMgr);
-		return accts;
+		return new ArrayList<>(accts);
 	}
 	
 	// tester
-	public static void main(String args[]){
-		AccountManager man = new AccountManager();
-		
+	public static void main(String args[]) throws UserNotFoundException, ParseException{
 		SimpleDateFormat f = new SimpleDateFormat("MM/dd/yy");
+		Room r = new Room(301,RoomType.ECONOMY);
+		
+		User u = new User("testy test",1010,true);
+		ArrayList<User> usrs = new ArrayList<>();
+		usrs.add(u);
+		AccountManager man = new AccountManager(usrs);
+		
+		u.makeReservation(r,f.parse("12/13/12"),f.parse("12/13/12"));
 		
 		int target = man.setupGuest("shelly");
 		int test = man.setupManager("brandon");
@@ -147,5 +163,15 @@ public class AccountManager implements Serializable {
 		System.out.println("added: " + man.getAll());
 		System.out.println("All: " + man.users.values());
 		System.out.println("User 10002 is " + man.login(10002));
+		
+		User u2 = man.login(1010);
+		
+		u2.makeReservation(r,f.parse("12/12/12"),f.parse("12/12/12"));
+		System.out.println(u2.getReservations());
+		System.out.println(u.getReservations());
+		System.out.println(u2==u);
+		
+		man.permaban(10009);
+		man.permaban(10000);
 	}
 }
