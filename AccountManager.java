@@ -1,6 +1,7 @@
 //package hotel;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -157,6 +158,26 @@ public class AccountManager implements Serializable {
 			all.addAll(u.getReservations());
 		return new RoomScheduler(all);
 	}
+	
+	/**
+	 * Saves an AccountManager object to a file
+	 * @param man	the AccountManager to write
+	 * @throws IOException
+	 */
+	public static void saveData(AccountManager man) throws IOException{
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName));
+		oos.writeObject(man);
+	}
+	
+	/**
+	 * Retrieves an AccountManager object from a file
+	 * @param man	the AccountManager to read
+	 * @throws IOException
+	 */
+	public AccountManager loadData(String filename) throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename));
+        return (AccountManager) ois.readObject();
+    }
 	
 	// tester
 	public static void main(String args[]) throws UserNotFoundException, ParseException{
