@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -61,9 +62,10 @@ public class SignInView{
 	}
 	 class SignUpbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			SignUpView view = new SignUpView();
-            view.SignUp();
-            HotelWindow.dispose();
+			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+"[insert ID]");
+			panel.add(Congrats);
+			Congrats.setBounds(20,5,280, 60);
+           // HotelWindow.dispose();
             }
 	}
 }

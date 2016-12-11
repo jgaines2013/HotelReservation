@@ -14,7 +14,7 @@ public class ManagerSigninView{
 	 JTextField Username;
 	 JFrame HotelWindow;
 	 JPanel panel;
-	 JLabel Congrats;
+	 //JLabel Congrats;
 	 Container pane;
 	public void SignIn(){
 		
@@ -57,13 +57,14 @@ public class ManagerSigninView{
 	 class SignInbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
 			ManagerMenuViews view=new ManagerMenuViews();
+			RoomScheduler rs = new RoomScheduler();
             view.ManagerSignin();
             HotelWindow.dispose();
             }
 	}
 	 class SignUpbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+"[insert ID]");
+			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+"[insert ID]");
 			panel.add(Congrats);
 			Congrats.setBounds(20,5,280, 60);
 			//ManagerSigninView view = new ManagerSigninView();

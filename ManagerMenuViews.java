@@ -1,9 +1,15 @@
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -64,14 +70,25 @@ public class ManagerMenuViews{
 	}
 	class LoadResbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			ResMenuView view=new ResMenuView();
-            view.ResPage();
-            HotelWindow.dispose();
+			//loads the info to the program stays on window
+			JLabel msg = new JLabel(" The reservations have been loaded");
+			panel.add(msg);
+			msg.setBounds(20,5,280, 60);
+            //HotelWindow.dispose();
             }
 	}
 	 class ViewInfobtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
+			
 			MgrMonthView view = new MgrMonthView();
+			GregorianCalendar calendar = new GregorianCalendar();
+	        calendar.setTime(new Date());
+	        calendar.set(Calendar.HOUR, 0);
+	        calendar.set(Calendar.MINUTE, 0);
+	        calendar.set(Calendar.SECOND, 1);
+	        calendar.set(Calendar.MILLISECOND, 0);
+			
+			
             view.launchFrame();
             //HotelWindow.dispose();
             }
