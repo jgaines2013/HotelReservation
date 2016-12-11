@@ -170,8 +170,5 @@ public class AccountManager implements Serializable {
 		System.out.println(u2.getReservations());
 		System.out.println(u.getReservations());
 		System.out.println(u2==u);
-		
-		man.permaban(10009);
-		man.permaban(10000);
 	}
 }
