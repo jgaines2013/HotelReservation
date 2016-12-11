@@ -65,8 +65,8 @@ public class AvailableRoomsView{
 		//Date d = null;
 		//System.out.println(d);
 		//rs.getByDay(checkin);
-		
-		
+		//rs.getByDay(checkin);
+		Rooms.setText(rs.getByDayString(checkin));
 		AvailPage.setVisible(true);
 		
 		

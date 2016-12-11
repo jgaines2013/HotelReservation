@@ -156,6 +156,19 @@ public class RoomScheduler {
 		return new ArrayList<>(onDay);
 	}
 	
+	public String getByDayString(Date day){
+		Set<Reservation> onDay = new TreeSet<>();
+		String a= "";
+		for (Set<Reservation> rs : reservations.values())
+			for (Reservation r : rs)
+				if (r.contains(day))
+				{
+					a= a+"/n"+r.toString();
+					onDay.add(r);
+				}
+		return a;
+	}
+	
 	/**
 	 * Retrieve all reservations scheduled for a certain room, given its number
 	 * @param roomNum   number of the room to check
