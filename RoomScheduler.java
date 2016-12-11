@@ -64,6 +64,7 @@ public class RoomScheduler {
 		return null;
 	}
 	
+	
 	/**
 	 * Removes a reservation from the scheduler
 	 * @param r the reservation to remove
