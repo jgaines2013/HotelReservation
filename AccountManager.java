@@ -17,9 +17,9 @@ import java.util.TreeSet;
  * To log in, a user must supply their system-assigned ID to access their account.
  */
 public class AccountManager implements Serializable {
-	private HashMap<Integer, User> users;
+	private static HashMap<Integer, User> users;
 	//private RoomScheduler activeRes; // not sure about this honestly
-	private Set<Room> rooms;
+	private static Set<Room> rooms;
 	
 	// dummy accounts
 	private static final User firstGuest = new User("user1", 1000, false);

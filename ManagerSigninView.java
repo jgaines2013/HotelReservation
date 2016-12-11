@@ -56,15 +56,32 @@ public class ManagerSigninView{
 	}
 	 class SignInbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			ManagerMenuViews view=new ManagerMenuViews();
-			RoomScheduler rs = new RoomScheduler();
-            view.ManagerSignin();
-            HotelWindow.dispose();
+			AccountManager users = new AccountManager();
+			try {
+				
+				//if ID is in List of Manager IDs, log in
+				//take the textfield convert to number then take number compare  
+				//to other numbers in Manager ID
+				users.login(Integer.parseInt(Username.toString()));
+				//if username.getID().isAdmin()
+				ManagerMenuViews view=new ManagerMenuViews();
+				//RoomScheduler rs = new RoomScheduler();
+	            view.ManagerSignin();
+	            HotelWindow.dispose();
+			} catch (NumberFormatException | UserNotFoundException e1) {
+				// TODO Auto-generated catch block
+				System.out.println("user not found try again");
+			}
+
             }
 	}
 	 class SignUpbtn implements ActionListener{
 		public void actionPerformed (ActionEvent e){
-			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+"[insert ID]");
+			String username = Username.toString();
+			AccountManager users = new AccountManager();
+			int ID = users.setupManager(username);
+			
+			JLabel Congrats = new JLabel("Congrats "+ Username.getText()+", your ID is "+ ID);
 			panel.add(Congrats);
 			Congrats.setBounds(20,5,280, 60);
 			//ManagerSigninView view = new ManagerSigninView();
